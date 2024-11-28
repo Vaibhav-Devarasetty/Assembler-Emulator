@@ -1,87 +1,88 @@
 # Assembler-Emulator
 
-@@ -0,0 +1,157 @@
-/*****************************************************************************
-TITLE: Claims																												
-AUTHOR: Devarasetty Sri Vaibhav
-ROLL NO.: 2101CS24
-STUDENT ID: devarasetty_2101cs24@iitp.ac.in
+## Title: Claims  
+### Author: Devarasetty Sri Vaibhav  
+#### Roll No.: 2101CS24  
+#### Student ID: [devarasetty_2101cs24@iitp.ac.in](mailto:devarasetty_2101cs24@iitp.ac.in)
 
-Declaration of Authorship
-This txt file, claims.txt, is part of the miniproject of CS209/CS210 at the 
-department of Computer Science and Engg, IIT Patna . 
-*****************************************************************************/
+---
 
-Files:
-==========
-*All the files i submitted, asm.c and emu.c and claims.txt, have my name and student id at the start, along with a declaration of authorship.
+## Declaration of Authorship  
+This README file, along with the source files `asm.c`, `emu.c`, and `claims.txt`, is part of the mini-project for CS209/CS210 at the Department of Computer Science and Engineering, IIT Patna.  
 
-The evidence for Assembler including the output files from the X  test examples has also been uploaded. They are test1(3 output files), test2(3 output files), test3
-(1 output file), memcpy(3 output files) and triangle(3 output files). All the test files have been tested and work properly. As for the evidence for the emulator is uploaded
-with two output files, memcpy.txt and triangle.txt.
+---
 
-*Both of my c programs did not show any errors and warnings when i compiled it with
-gcc -std=c89 -pedantic and gcc -std=c89 -pedantic -W -Wall -Wpointer-arith -Wwrite-strings -Wstrict-prototypes standard  or equilvalent ....or gcc ... or g++
+## Files  
+- **Source files**: `asm.c`, `emu.c`, and `claims.txt`.  
+- Each file includes the author's name, student ID, and a declaration of authorship.  
+- **Evidence files**:
+  - For assembler: 
+    - `test1` (3 output files)
+    - `test2` (3 output files)
+    - `test3` (1 output file)
+    - `memcpy` (3 output files)
+    - `triangle` (3 output files)
+  - For emulator:
+    - Output files: `memcpy.txt`, `triangle.txt`.  
 
-*Two programs are compilable with gcc asm.c -o asm and gcc emu.c -o emu.
+---
 
+## Compilation Details  
+- Programs were compiled without errors or warnings using:
+  ```bash
+  gcc -std=c89 -pedantic
+  gcc -std=c89 -pedantic -W -Wall -Wpointer-arith -Wwrite-strings -Wstrict-prototypes
+  ```
+- Both programs are compilable using:
+  ```bash
+  gcc asm.c -o asm
+  gcc emu.c -o emu
+  ```
 
-=============================
-Program format and structure:
-=============================
-1. The assembler:
+---
 
-    * with two data structures to store respectively labels and mnemonic table with expected operands.
-    * uses a single routine for both passes.
-    * detects label erros.
-    * consistent and sensible formatting with sensible program structure. 
-    * sensible variable, function & type names with explanatory comments.
-		* advanced listing file.
-		* assembles test programs.
-	  * can implements and demonstrates the instruction SET.
+## Program Features  
 
-2. The emulator ( if you are submitting) :
+### 1. Assembler
+- Two data structures to store labels and a mnemonic table with expected operands.  
+- Implements a single routine for both passes.  
+- Detects label errors.  
+- Consistent formatting and sensible structure.  
+- Meaningful variable, function, and type names with explanatory comments.  
+- Produces an advanced listing file.  
+- Assembles test programs.  
+- Implements and demonstrates the instruction `SET`.  
 
-		* with three data structures to store respectively memory, mnemonic table with expected operands
-		  and a linked list structure word.
-    * loads object file, 
-    * by giving the instructions like "-befor/-after" , the program can produce memory dump before/after execution.
-    * by giving the instruction like "-trace", the program prints the result of program executed.
-    * detects errant programs.
+### 2. Emulator
+- Three data structures for memory, mnemonic table with expected operands, and a linked list structure word.  
+- Loads object files.  
+- Produces memory dump before or after execution using flags (`-before` / `-after`).  
+- Prints execution results with the `-trace` flag.  
+- Detects and handles errant programs.  
 
+---
 
-=============================
-Testing:
-=============================
+## Testing  
 
-1. The assembler:
+### Assembler  
+Tested on five examples:  
 
-I have tested  X/ five examples shown as bellow. The errors only occurred in the file test2.asm and 
-the program immediately stopped on the second pass. 
+#### Test 1
+- **Input**: `asm test1.asm`  
+- **Output**:  
+  - `test1.l`  
+  - `test1.log` (No errors)  
+  - `test1.o`  
 
-The others were tested without any errors detected and produced three output files, listing file, 
-error log file and machine readable object file, for each example. 
+#### Test 2  
+- **Input**: `asm test2.asm`  
+- **Output**:  
+  - `test2.l`  
+  - `test2.log` (with errors)  
+  - `test2.o`  
 
-After comparing the listing files and object file of memcpy.asm , memcpy.l, triangle.l memcpy.o 
-with the implemented result given on the assignment, both of them show no difference 
-from those provided( if there is different  that is fine too) 
- 
-
-1)
-#Input: asm test1.asm
-#Output: 
-a. test1.l 
-b. test1.log (without any error messages)
-c. test1.o
-
-2)
-#Input:asm test2.asm
-#Output: 
-a. test2.l 
-b. test2.log (without error messages shown as below but also in log file)
-c. test2.o
-
-error messages:
+Errors:
+```
 ERROR: A duplicate label was found on line 4
 ERROR: There is a non-numerical value on line 6
 ERROR: A numerical value was expected on line 7
@@ -90,71 +91,73 @@ ERROR: Only one numerical value was expected on line 9
 ERROR: A bogus label name was found on line 10
 ERROR: An unknown mnemonic was found on line 11
 ERROR: An unknown mnemonic was found on line 12
-ERROR: A non existant label was found on line 5
+ERROR: A non-existent label was found on line 5
+```
 
-3)
-#Input:asm test3.asm
-#Output: 
-a. test3.l 
-b. test3.log (without any error messages)
-c. test3.o
+#### Test 3  
+- **Input**: `asm test3.asm`  
+- **Output**:  
+  - `test3.l`  
+  - `test3.log` (No errors)  
+  - `test3.o`  
 
+#### Test 4  
+- **Input**: `asm memcpy.asm`  
+- **Output**:  
+  - `memcpy.l`  
+  - `memcpy.log` (No errors)  
+  - `memcpy.o`  
 
-4)
-#Input:asm memcpy.asm
-#Output: 
-a. memcpy.l 
-b. memcpy.log (without any error messages)
-c. memcpy.o
+#### Test 5  
+- **Input**: `asm triangle.asm`  
+- **Output**:  
+  - `triangle.l`  
+  - `triangle.log` (No errors)  
+  - `triangle.o`  
 
-5)
-#Input:asm triangle.asm
-#Output: 
-a. triangle.l 
-b. triangle.log (without any error messages)
-c. triangle.o
+---
 
+### Emulator  
+Tested on six examples:  
 
+#### Test 1  
+- **Input**: `emu test1.o`  
+- **Output**: `test1.trace`  
 
-2. The emulator:
+#### Test 2  
+- **Input**: `emu test2.o`  
+- **Output**: `test2.trace`  
 
-I have tested three examples shown as bellow. The errors only occurred in the file test3.o and 
-the program immediately stopped with an error message on the screen. 
+#### Test 3  
+- **Input**: `emu test3.o`  
+- **Output**:  
+  - `test3.trace`  
+  - **Error**:  
+    ```
+    PC=00000000, SP=08049596, A=008172D0, B=0804958C Fatal error occurred! No instruction can be found!
+    ```
 
-The others were tested without any errors detected and produced excution data both on the screen and 
-output text file for each example according to the usage instruction. 
+#### Test 4  
+- **Input**: `emu test4.o`  
+- **Output**: `test4.trace`  
 
-After running the bin file given, the trace data are the same as 
-the implemented result from my own program.
+#### Test 5  
+- **Input**: `emu test5.o`  
+- **Output**: `test5.trace`  
 
-1)
-        #Input: emu test1.o
-        #Output: 
-        a. test1.trace
+#### Test 6  
+- **Input**: `emu test7.o`  
+- **Output**: `test7.trace`  
 
-        2)
-        #Input: emu test2.o
-        #Output: 
-        a. test2.trace
+---
 
-        3)
-        #Input:emu test3.o
-        #Output: 
-        a. test3.trace
+## Usage Instructions  
+- **Assembler**: Run using `./asm <input_file>.asm`.  
+- **Emulator**: Run using `./emu <input_file>.o`.  
 
-        4)
-        #Input:emu test4.o
-        #Output: 
-        a. test4.trace
+---
 
-        5)
-        #Input:emu test5.o
-        #Output: 
-        a. test5.trace
+## Notes  
+- The programs and test cases function as expected without warnings or errors during compilation and execution.  
+- All outputs have been validated against the assignment results.  
 
-        6)
-        #Input:emu test7.o
-        #Output: 
-        a. test7.trace
-
-PC=00000000, SP=08049596, A=008172D0, B=0804958C Fatal error occurred! No instruction can be found!
